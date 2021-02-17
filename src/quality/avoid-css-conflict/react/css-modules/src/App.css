@@ -1,0 +1,37 @@
+:global(.app) {
+  background: #ddd;
+}
+
+:global(.app a) {
+  text-decoration: none;
+  border-bottom: 1px dashed currentColor;
+}
+
+.text {
+  text-align: center;
+  color: green;
+}
+
+.hi-you {
+  color: yellow;
+}
+
+.rotate {
+  margin-top: 20px;
+  display: inline-block;
+  animation: rotate ease-in 3s infinite;
+}
+
+@keyframes rotate {
+  0% {
+    transform: rotate(0);
+  }
+  50% {
+    transform: rotate(180deg);
+  }
+
+  100% {
+    transform: rotate(360deg);
+  }
+}
+

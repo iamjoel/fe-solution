@@ -1,0 +1,50 @@
+.pagination {
+  display: flex;
+}
+
+.pagination li {
+  display: flex;
+  margin-right: 5px;
+  width: 20px;
+  height: 20px;
+  justify-content: center;
+  align-items: center;
+  color: #f60;
+  border: 1px solid #f60;
+  cursor: pointer;
+}
+
+.pagination li>a {
+  display: block;
+  height: 100%;
+}
+
+.pagination li>a:focus {
+  outline: none;
+}
+
+.pagination li.active {
+  background-color: #f60;
+  color: #fff;
+}
+
+.pagination .previous,
+.pagination .next {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 60px;
+}
+
+.pagination .disabled {
+  color: #eee;
+  border-color: #eee;
+}
+
+.pagination .disabled a{
+  cursor: not-allowed;
+}
+
+.pagination .break-me {
+  border: none;
+}

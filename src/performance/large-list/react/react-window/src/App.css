@@ -1,0 +1,9 @@
+.list {
+  width: 500px;
+  margin: 10px auto;
+}
+.item {
+  display: flex;
+  align-items: center;
+  border-bottom: 1px solid #ddd;
+}

@@ -8,3 +8,10 @@
 
 ## 场景
 * [拖放排序](src/scene/dnd-sort/README.md)。关键字: react-beautiful-dnd，react DnD。
+
+## 参与贡献
+我们非常欢迎你的贡献，你可以通过以下方式和我们一起共建：
+- 通过 [Issue](https://github.com/iamjoel/fe-solution/issues) 报告 bug 或进行咨询。
+- 提交 [Pull Request](https://github.com/iamjoel/fe-solution/pulls) 增加新的解决方案代码或修改 bug。
+
+参与贡献前请先阅读 [CONTRIBUTING](.github/CONTRIBUTING.md)

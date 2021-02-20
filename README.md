@@ -8,3 +8,4 @@
 
 ## 场景
 * [拖放排序](src/scene/dnd-sort/README.md)。关键字: react-beautiful-dnd，react DnD。
+* [拖放上传图片](src/scene/dnd-upload-image/README.md)

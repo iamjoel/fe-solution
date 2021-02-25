@@ -1,23 +1,24 @@
 <template>
-  <div class="hello">
-    <div class="upload">
-      <div class="upload_content">
-        <div>请将文件拖拽至此处</div>
-        <div class="upload_cover"></div>
-        <input
-          @change="fileChange($event)"
-          type="file"
-          ref="file"
-          id="upload_file"
-          multiple
-        />
-      </div>
-        <div class=""></div>
+  <div class="dnd-upload">
+    <div class="dnd-upload__area" :class="{'dnd-upload__area--over': isOver}" @dragover="handleDragOver($event)"
+      @dragleave="handleDragLeave($event)" @drop="drop">
+      请将文件拖到这里(支持同时拖多个)
+      <div>一堆其他内容</div>
+      <div>一堆其他内容</div>
+      <div>一堆其他内容</div>
     </div>
-    <div class="item_info" v-for="(item,index) in imgInfo" :key="index">
-      <div>当前上传文件名：{{item.imgName}}</div>
-      <div>当前上传文件大小：{{item.imgSize}}</div>
-      <div>当前上传文件类型：{{item.imgType}}</div>
+    <div class="dnd-upload__uploaded">
+      <h2>已上传文件</h2>
+      <div class="dnd-upload__uploaded-list">
+        <div
+          class="dnd-upload__uploaded-item"
+          v-for="(item, i) in uploadList"
+          :key="i"
+        >
+          <div>文件名: {{item.name}}</div>
+          <div class="dnd-upload__uploaded-item-size">大小: {{item.size}} KB</div>
+        </div>
+      </div>
     </div>
   </div>
 </template>
@@ -25,78 +26,70 @@
 export default {
   data() {
     return {
-      file: '',
-      imgName:'',
-      imgSize: '',
-      imgType: '',
-      imgInfo: [],
+      uploadList: [],
+      isOver: false
     };
   },
   methods: {
-    fileChange(el) {
-      this.file = el.target.files[0]
-      let imgObj = {
-        imgName: this.file.name,
-        imgSize: this.file.size,
-        imgType: this.file.type
-      }
-      this.imgInfo.push(imgObj)
+    handleDragOver(el){
+      this.isOver = true
+      el.preventDefault()
+      el.stopPropagation()
+    },
+    handleDragLeave(el){
+      this.isOver = false
+      el.preventDefault()
+      el.stopPropagation()
+    },
+    drop(el){
+      this.isOver = false
+      el.preventDefault()
+      el.stopPropagation()
+      let uplist = [...(el.dataTransfer.files)]
+      uplist.filter(item=>{
+        var obj = {
+          name: item.name,
+          size: item.size
+        }
+        this.uploadList.push(obj)
+      })
+      console.log(this.uploadList)
     },
   },
 };
 </script>
 <style scoped>
-.upload_content{
-    position: relative;
-    width: 300px;
-    height: 200px;
-    background-color: rgb(231, 231, 231);
-    border-radius: 4px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-#upload_file{
-    position: absolute;
-    top: 0;
-    right: 0;
-    left: 0;
-    bottom: 0;
-    width: 300px;
-    height: 200px;
-}
-.upload_cover{
-    position: absolute;
-    top: 0;
-    right: 0;
-    left: 0;
-    bottom: 0;
-    border-top-left-radius: 4px;
-    background-color: rgb(231, 231, 231);
-    width: 298px;
-    height: 24px;
-    z-index: 1;
+.dnd-upload {
+  margin: 10px auto;
+  width: 500px;
 }
 
-.item_info {
-  margin-top: 10px;
-  justify-content: flex-start;
-  border:1px green solid;
-  height: aotu;
-  padding: 10px;
-  margin-right: 20px;
-}
-
-.upload {
-  border: 1px solid #ccc;
-  background-color: #fff;
-  border-radius: 4px;
-  padding: 10px;
-  display: flex;
-}
-.hello {
-  padding: 20px;
-  width: 720px;
+.dnd-upload__area {
+  margin-bottom: 20px;
+  padding-top: 20px;
+  height: 200px;
   text-align: center;
+  border: 3px dashed blue;
+}
+
+.dnd-upload__area--over {
+  color: #fff;
+  background-color: rgba(0, 0, 0, 0.5);
+}
+
+.dnd-upload__uploaded-list {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.dnd-upload__uploaded-item {
+  margin-right: 10px;
+  margin-bottom: 10px;
+  padding: 10px;
+  box-shadow: 0 3px 8px 0 rgb(0 0 0 / 8%), 0 1px 2px 0 rgb(0 0 0 / 8%);
+  border-radius: 3px;
+}
+.dnd-upload__uploaded-item-size{
+  text-align:left;
 }
 </style>

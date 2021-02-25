@@ -1,7 +1,9 @@
 import React from 'react';
-import logo from './logo.svg';
-import './App.css';
 import { Inspector } from 'react-dev-inspector'
+import CompA from './components/comp-a'
+import CompB from './components/comp-b'
+import './App.css';
+
 
 const InspectorWrapper = process.env.NODE_ENV === 'development'
   ? Inspector
@@ -21,10 +23,13 @@ function App() {
     >
       <div className="App">
         <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
           <p>
-            按 ctrl + b 来开启, 点击调整到源码。
+            按 ctrl + b 来开启点击组件查看对应的源码功能。 <br />
+            点击 Comp A 或 Comp B 来体验吧~
           </p>
+
+          <CompA />
+          <CompB />
         </header>
       </div>
     </InspectorWrapper>

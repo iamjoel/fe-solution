@@ -6,6 +6,9 @@
 ## 性能优化
 * [长列表优化](src/performance/large-list/README.md)。关键字: 分页。 虚拟列表，react window。
 
+## 开发效率
+* [快速找到组件对应的源代码](src/effective/quick-find-comp-src/README.md)。关键字: React Dev Inspector，React Developer Tools，Vue.js devtools。
+
 ## 场景
 * [拖放排序](src/scene/dnd-sort/README.md)。关键字: react-beautiful-dnd，react DnD。
 * [拖放上传文件](src/scene/dnd-upload-file/README.md) 关键字: Drag & Drop API。

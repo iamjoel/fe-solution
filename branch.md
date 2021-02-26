@@ -11,3 +11,4 @@
 ## 场景
 * 拖放排序: feature/dnd-sort
 * 拖放上传文件: feature/dnd-upload-img
+* 异步同时获取数据，按指定顺序渲染元素: feature/async-data-in-order-render

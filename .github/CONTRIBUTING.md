@@ -18,8 +18,8 @@
 1. 问题或业务场景描述
 2. 问题或业务场景对应的解决方案
 
-## 代码脚手架
-推荐用的代码脚手架。 Vue 用 vue-cli， React 用 create-react-app。
+## 项目初始代码用代码脚手架生成
+React 用 [Create React App](https://create-react-app.dev/)。 Vue 用 [Vue CLI](https://cli.vuejs.org/zh/)。
 
 ## 其他
 尽量用 TypeScript。

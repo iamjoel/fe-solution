@@ -9,18 +9,18 @@ module.exports = function (plop) {
         },
         {
           type: 'input',
-          name: 'isContainer',
-          message: '是 Container 吗？(y/n)', // TODO: 改成 是否是 func comp
+          name: 'isFunComp',
+          message: '是函数组件吗(默认是 Class 组件)？(y/n)'
         }
       ],
       actions: data => {
-        const folder = data.isContainer === 'y' ? 'containers' : 'components'
+        const isFunComp = data.isFunComp === 'y'
         const componentName = toComponentName(data.name)
         const actions = [
           {
             type: 'add',
-            path: `src/components/${folder}/{{name}}/index.tsx`,
-            templateFile: 'plop-templates/component.hbs',
+            path: `src/components/{{name}}/index.tsx`,
+                templateFile: `plop-templates/${isFunComp ? 'fun-component' : 'class-component'}.hbs`,
             data: {
               componentName
             },
@@ -28,7 +28,7 @@ module.exports = function (plop) {
           },
           {
             type: 'add',
-            path: `src/components/${folder}/{{name}}/style.scss`,
+            path: `src/components/{{name}}/style.scss`,
             templateFile: 'plop-templates/style.hbs',
             skipIfExists: true
           }

@@ -6,6 +6,7 @@
 * 长列表优化: feature/large-list
 
 ## 开发效率
+* 快速生成代码: feature/quick-gen-code
 * 快速找到组件对应的源代码: feature/quick-find-comp-src
 
 ## 场景

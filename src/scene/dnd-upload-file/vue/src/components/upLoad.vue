@@ -45,14 +45,11 @@ export default {
       this.isOver = false
       el.preventDefault()
       el.stopPropagation()
-      let uplist = [...(el.dataTransfer.files)]
-      uplist.filter(item=>{
-        var obj = {
-          name: item.name,
-          size: item.size
-        }
-        this.uploadList.push(obj)
-      })
+      let uploadFile = [...(el.dataTransfer.files)].map(item=>({
+        name: item.name,
+        size: item.size
+      }))
+      this.uploadList = [...this.uploadList, ...uploadFile]
       console.log(this.uploadList)
     },
   },

@@ -1,16 +1,16 @@
 <template>
   <div id="app">
-    <load></load>
+    <UpLoad></UpLoad>
   </div>
 </template>
 
 <script>
-import load from './components/load.vue'
+import UpLoad from './components/upLoad.vue'
 
 export default {
   name: 'App',
   components: {
-    load,
+    UpLoad,
   }
 }
 </script>

@@ -12,13 +12,13 @@
 
 ## 场景
 * [拖放排序](src/scene/dnd-sort/README.md)。关键字: react-beautiful-dnd，react DnD。
-* [拖放上传文件](src/scene/dnd-upload-file/README.md) 关键字: Drag & Drop API。
-* [列表滚动无限加载](src/scene/list-infinite-load/README.md) 关键字: scrollHeight，clientHeight，scrollTop。
-* [异步同时获取数据，按指定顺序渲染元素](src/scene/async-data-in-order-render/README.md) 关键字: 异步控制。
+* [拖放上传文件](src/scene/dnd-upload-file/README.md)。关键字: Drag & Drop API。
+* [列表滚动无限加载](src/scene/list-infinite-load/README.md)。关键字: scrollHeight，clientHeight，scrollTop。
+* [异步同时获取数据，按指定顺序渲染元素](src/scene/async-data-in-order-render/README.md)。关键字: 异步控制。
 
 ## 参与贡献
 我们非常欢迎你的贡献，你可以通过以下方式和我们一起共建：
 - 通过 [Issue](https://github.com/iamjoel/fe-solution/issues) 报告 bug 或进行咨询。
 - 提交 [Pull Request](https://github.com/iamjoel/fe-solution/pulls) 增加新的解决方案代码或修改 bug。
 
-参与贡献前请先阅读 [CONTRIBUTING](.github/CONTRIBUTING.md)
+参与贡献前请先阅读 [CONTRIBUTING](.github/CONTRIBUTING.md)。

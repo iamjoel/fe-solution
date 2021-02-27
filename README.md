@@ -7,7 +7,7 @@
 * [长列表优化](src/performance/large-list/README.md)。关键字: 分页。 虚拟列表，react window。
 
 ## 开发效率
-* [快速生成代码](src/effective/quick-gen-code/README.md)
+* [快速生成代码](src/effective/quick-gen-code/README.md)。关键字: Create React App，Vue CLI，Plop。
 * [快速找到组件对应的源代码](src/effective/quick-find-comp-src/README.md)。关键字: React Dev Inspector，React Developer Tools，Vue.js devtools。
 
 ## 场景

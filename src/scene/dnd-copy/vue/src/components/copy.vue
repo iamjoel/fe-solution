@@ -40,6 +40,8 @@ export default {
   border: 1px #ccc solid;
   border-radius: 6px;
   text-align: left;
+  width: 200px;
+  margin: 0 auto;
   padding: 10px 20px;
 }
 .dnd-copy__btn {

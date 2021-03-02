@@ -9,6 +9,7 @@
 ## 开发效率
 * [快速生成代码](src/effective/quick-gen-code/README.md)。关键字: Create React App，Vue CLI，Plop。
 * [快速找到组件对应的源代码](src/effective/quick-find-comp-src/README.md)。关键字: React Dev Inspector，React Developer Tools，Vue.js devtools。
+* [用工具 CSS 来快速写样式](src/effective/utility-css/README.md)。关键字: tailwind CSS。
 
 ## 场景
 * [拖放排序](src/scene/dnd-sort/README.md)。关键字: react-beautiful-dnd，react DnD。

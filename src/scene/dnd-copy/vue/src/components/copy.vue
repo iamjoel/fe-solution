@@ -1,9 +1,9 @@
 <template>
-  <div class="dnd-copy">
-    <div class="dnd-copy__content-copy">
+  <div class="clipborad">
+    <div class="clipborad__content-copy">
         我是要复制的内容
       </div>
-    <button class="dnd-copy__btn" @click="copy">复制</button>
+    <button class="clipborad__btn" @click="handleCopy">复制</button>
   </div>
 </template>
 
@@ -14,8 +14,8 @@ export default {
     return {};
   },
   methods: {
-    copy() {
-      let value = document.getElementsByClassName('dnd-copy__content-copy')[0].innerHTML;
+    handleCopy() {
+      let value = document.getElementsByClassName('clipborad__content-copy')[0].innerHTML;
       this.copyValue(value)
     },
     copyValue(val){
@@ -31,12 +31,12 @@ export default {
 </script>
 
 <style scoped>
-.dnd-copy {
+.clipborad {
   padding: 20px;
   height: 100%;
   width: 100%;
 }
-.dnd-copy__content-copy {
+.clipborad__content-copy {
   border: 1px #ccc solid;
   border-radius: 6px;
   text-align: left;
@@ -44,7 +44,7 @@ export default {
   margin: 0 auto;
   padding: 10px 20px;
 }
-.dnd-copy__btn {
+.clipborad__btn {
   margin: 20px 10px;
   padding: 5px 10px;
   border: 1px #ccc solid;

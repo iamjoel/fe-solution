@@ -8,6 +8,7 @@
 ## 开发效率
 * 快速生成代码: feature/quick-gen-code
 * 快速找到组件对应的源代码: feature/quick-find-comp-src
+* 用工具 CSS 来快速写样式: feature/utility-css
 
 ## 场景
 * 拖放排序: feature/dnd-sort

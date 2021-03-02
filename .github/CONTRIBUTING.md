@@ -1,12 +1,15 @@
 # CONTRIBUTING
 ## Pull Request
+- 新功能向 `release` 分支提 `pr`。
+- 功能优化向对应的功能分支提 `pr`。所有功能分支见[这里](../branch.md)。
 - 不要向 `main` 分支提 `pr`。
 
 ## 项目结构及文件命名规范
 所有代码都放 `src` 下：
 - src
   - quality: 代码质量
-  - performance：性能优化
+  - performance: 性能优化
+  - effective: 开发效率
   - scene: 场景
 
 具体的某个解决方案按照归属都放上面的文件夹中。

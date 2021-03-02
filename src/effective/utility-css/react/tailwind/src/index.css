@@ -1,3 +1,25 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+
+.card {
+  @apply flex items-center p-6 max-w-sm mx-auto  rounded-xl shadow-md space-x-4;
+  @apply bg-white;
+}
+
+.card-left {
+  @apply flex-shrink-0;
+}
+
+.card-img {
+  @apply h-12 w-12;
+}
+
+.card-right {
+  @apply text-xl font-medium text-black;
+}
+
+.card-text {
+  @apply text-gray-500;
+}

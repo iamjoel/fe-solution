@@ -1,0 +1,7 @@
+{
+    "home":{
+        "describe":"这是一个i18n测试页",
+        "language":"中文",
+        "cut":"切换"
+    }
+}

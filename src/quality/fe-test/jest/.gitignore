@@ -24,3 +24,6 @@ yarn-error.log*
 
 # 截图
 __snapshots__
+
+# 覆盖率
+coverage

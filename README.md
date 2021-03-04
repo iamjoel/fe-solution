@@ -16,6 +16,7 @@
 * [拖放上传文件](src/scene/dnd-upload-file/README.md)。关键字: Drag & Drop API。
 * [列表滚动无限加载](src/scene/list-infinite-load/README.md)。关键字: scrollHeight，clientHeight，scrollTop。
 * [异步同时获取数据，按指定顺序渲染元素](src/scene/async-data-in-order-render/README.md)。关键字: 异步控制。
+* [国际化/多语言](src/scene/i18n/README.md)
 
 ## 参与贡献
 我们非常欢迎你的贡献，你可以通过以下方式和我们一起共建：

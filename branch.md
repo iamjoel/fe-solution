@@ -15,6 +15,7 @@
 * 拖放上传文件: feature/dnd-upload-img
 * 列表滚动无限加载: feature/list-infinite-load
 * 异步同时获取数据，按指定顺序渲染元素: feature/async-data-in-order-render
+* 国际化: feature/i18n
 
 ## 其他
 * 文档优化: docs

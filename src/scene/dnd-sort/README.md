@@ -5,5 +5,5 @@
 ## 解决方案
 * react
   * 第三方库 [react-beautiful-dnd](https://github.com/atlassian/react-beautiful-dnd)。 [Demo](./react/rbd/README.md)。 
-  * 第三方库 [react DnD](https://github.com/react-dnd/react-dnd/)。 [Demo](./react/react-dnd/README.md)。 有点难学。
+  * 第三方库 [react DnD](https://github.com/react-dnd/react-dnd/)。 [Demo](./react/react-dnd/README.md)。 [Sortable 的封装](react/react-dnd/src/components/Sortable.tsx)
   

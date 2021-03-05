@@ -43,12 +43,16 @@ const Card = forwardRef<HTMLDivElement, CardProps>(
     connectDragSource(elementRef)
     connectDropTarget(elementRef)
 
-    const opacity = isDragging ? 0 : 1
+    const placeholderStyle = isDragging ? {
+      borderColor: 'blue',
+      background: 'rgba(0, 102, 255)',
+      color: 'rgba(0, 102, 255)'
+    } : {}
     useImperativeHandle<any, CardInstance>(ref, () => ({
       getNode: () => elementRef.current,
     }))
     return (
-      <div ref={elementRef} style={{ ...style, opacity }}>
+      <div ref={elementRef} style={{ ...style, ...placeholderStyle }}>
         {text}
       </div>
     )
@@ -66,57 +70,45 @@ export default DropTarget(
       if (!component) {
         return null
       }
-      // node = HTML Div element from imperative API
-      const node = component.getNode()
+      const node = component.getNode() // hover node
       if (!node) {
         return null
       }
 
       const dragIndex = monitor.getItem().index
+      // console.log(monitor.getItem()) // beginDrag 返回的对象
       const hoverIndex = props.index
+      console.log(`拖的那个: ${dragIndex}, 碰到的那个 ${hoverIndex}`)
 
-      // Don't replace items with themselves
       if (dragIndex === hoverIndex) {
         return
       }
 
-      // Determine rectangle on screen
       const hoverBoundingRect = node.getBoundingClientRect()
 
-      // Get vertical middle
       const hoverMiddleY =
         (hoverBoundingRect.bottom - hoverBoundingRect.top) / 2
 
-      // Determine mouse position
       const clientOffset = monitor.getClientOffset()
 
-      // Get pixels to the top
       const hoverClientY = (clientOffset as XYCoord).y - hoverBoundingRect.top
 
-      // Only perform the move when the mouse has crossed half of the items height
-      // When dragging downwards, only move when the cursor is below 50%
-      // When dragging upwards, only move when the cursor is above 50%
-
-      // Dragging downwards
+      // 往下移
       if (dragIndex < hoverIndex && hoverClientY < hoverMiddleY) {
         return
       }
-
-      // Dragging upwards
+      // 往上移
       if (dragIndex > hoverIndex && hoverClientY > hoverMiddleY) {
         return
       }
 
-      // Time to actually perform the action
+      // 卡片互换
       props.moveCard(dragIndex, hoverIndex)
 
-      // Note: we're mutating the monitor item here!
-      // Generally it's better to avoid mutations,
-      // but it's good here for the sake of performance
-      // to avoid expensive index searches.
       monitor.getItem().index = hoverIndex
     },
   },
+  // collect
   (connect: DropTargetConnector) => ({
     connectDropTarget: connect.dropTarget(),
   }),
@@ -128,6 +120,12 @@ export default DropTarget(
         id: props.id,
         index: props.index,
       }),
+      endDrag: (props: CardProps, monitor: DragSourceMonitor) => {
+        if (!monitor.didDrop()) {
+          return
+        }
+        console.log('end drag')
+      }
     },
     (connect: DragSourceConnector, monitor: DragSourceMonitor) => ({
       connectDragSource: connect.dragSource(),

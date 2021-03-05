@@ -12,7 +12,13 @@ import {
   DragSourceConnector,
 } from 'react-dnd'
 import { XYCoord } from 'dnd-core'
-
+const style = {
+  border: '1px dashed gray',
+  padding: '0.5rem 1rem',
+  marginBottom: '.5rem',
+  backgroundColor: 'white',
+  cursor: 'move',
+}
 
 
 export interface SortableProps {
@@ -40,7 +46,7 @@ const Sortable = forwardRef<HTMLDivElement, SortableProps>(
       getNode: () => elementRef.current,
     }))
     return (
-      <div ref={elementRef} >
+      <div ref={elementRef}>
         {renderItem(isDragging)}
       </div>
     )
@@ -49,7 +55,7 @@ const Sortable = forwardRef<HTMLDivElement, SortableProps>(
 
 // https://github.com/influitive/react-dnd-sortable/blob/master/src/sortable-item.jsx
 const Wrap = (type: string) => {
-  let Comp = DropTarget(
+  const Comp = DropTarget(
     type,
     {
       hover(
@@ -114,7 +120,6 @@ const Wrap = (type: string) => {
           if (!monitor.didDrop()) {
             return
           }
-          // console.log('end drag')
         }
       },
       (connect: DragSourceConnector, monitor: DragSourceMonitor) => ({

@@ -1,6 +1,6 @@
 /* eslint-disable no-lone-blocks */
 import { FC, useState } from 'react'
-import Card from './Card'
+// import Card from './Card'
 import Sortable from './Sortable'
 import update from 'immutability-helper'
 
@@ -29,6 +29,8 @@ export interface Item {
 export interface ContainerState {
   cards: Item[]
 }
+
+const Comp = Sortable('list')
 
 export const Container: FC = () => {
   {
@@ -76,9 +78,10 @@ export const Container: FC = () => {
       )
     }
 
-    const Comp = Sortable('sortable-type')
+    // const Comp = Sortable
 
     const renderItem = (isDragging: boolean, item: Item) => {
+      // return item.text
       const otherStyle = isDragging ? placeholderStyle : {}
       return (
         <div style={{
@@ -93,7 +96,7 @@ export const Container: FC = () => {
     return (
       <div style={style}>
         <h2>Card</h2>
-        {cards.map((card, i) => (
+        {/* {cards.map((card, i) => (
           <Card
             key={card.id}
             index={i}
@@ -101,7 +104,7 @@ export const Container: FC = () => {
             text={card.text}
             moveCard={moveCard}
           />
-        ))}
+        ))} */}
         <h2>Sortable</h2>
         {cards.map((card, i) => (
           <Comp

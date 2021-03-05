@@ -1,0 +1,30 @@
+.dnd-upload {
+  margin: 10px auto;
+  width: 500px;
+}
+
+.dnd-upload__area {
+  margin-bottom: 20px;
+  padding-top: 20px;
+  height: 200px;
+  text-align: center;
+  border: 3px dashed blue; 
+}
+
+.dnd-upload__area--over {
+  color: #fff;
+  background-color: rgba(0, 0 , 0, .5);
+}
+
+.dnd-upload__uploaded-list {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.dnd-upload__uploaded-item {
+  margin-right: 10px;
+  margin-bottom: 10px;
+  padding: 10px;
+  box-shadow: 0 3px 8px 0 rgb(0 0 0 / 8%), 0 1px 2px 0 rgb(0 0 0 / 8%);
+  border-radius: 3px;
+}

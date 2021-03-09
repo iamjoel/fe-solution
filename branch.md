@@ -3,6 +3,7 @@
 * 全局样式污染解决方案: feature/avoid-css-conflict
 * 前端测试: feature/test
 ## 性能优化
+* React 性能优化: feature/react-performance
 * 长列表优化: feature/large-list
 
 ## 开发效率

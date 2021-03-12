@@ -5,8 +5,9 @@
 * [前端测试](src/quality/fe-test/README.md)。 关键字: 单元测试，UI 测试，测试覆盖率，Jest。
 
 ## 性能优化
-* [React 性能优化](src/performance/react/README.md)
-* [长列表优化](src/performance/large-list/README.md)。关键字: 分页。 虚拟列表，react window。
+* 运行时性能优化
+  * [React 性能优化](src/performance/react/README.md)
+  * [长列表优化](src/performance/large-list/README.md)。关键字: 分页。 虚拟列表，react window。
 
 ## 开发效率
 * [快速生成代码](src/effective/quick-gen-code/README.md)。关键字: Create React App，Vue CLI，Plop。

@@ -12,6 +12,19 @@
 
 ### 3. 中间属性变化时，避免 中间组件的 Render
 
+### 4. 批量更新: 减少 Render 次数
+对于类组件，在 React 管理的事件回调和生命周期中，setState 是异步的，而其他时候 setState 都是同步的。
+```js
+this.setState({a: 3})
+this.setState({b: 4})
+
+// 优化成
+this.setState({a: 3, b: 4})
+```
+
+对于函数组件，
+
+
 ## 避免不必用的 DOM 更新
 ### 避免不必用的列表项 DOM 更新
 列表项使用 key 属性。

@@ -1,4 +1,4 @@
-.drag-line {
+.wrap {
   position: absolute;
   top: 0;
   right: -5px;
@@ -19,10 +19,11 @@
   &:hover {
     background-image: url(./images/expend-hover.svg);
   }
-  &-not-expand {
-    background-image: url(./images/not-expend.svg);
-    &:hover {
-      background-image: url(./images/not-expend-hover.svg);
-    }
+}
+
+.fold {
+  background-image: url(./images/not-expend.svg);
+  &:hover {
+    background-image: url(./images/not-expend-hover.svg);
   }
 }

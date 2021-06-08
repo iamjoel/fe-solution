@@ -1,0 +1,15 @@
+.app {
+  display: flex;
+  height: 100vh;
+}
+
+.left {
+  position: relative;
+  border-right: 1px solid #e6e9ed;
+  height: 100%;
+}
+
+.right {
+  flex-grow: 1;
+  height: 100%;
+}

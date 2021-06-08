@@ -30,11 +30,11 @@ const ResizeWidth: FC<IResizeWidthProps> = ({
 
   return (
     <div
-      className={s.dragLine}
+      className={s.wrap}
       onMouseDown={handleStartResizing}
       onMouseUp={handleStopResizing}
     >
-      <div className={cn(s.toggleBtn, !isExpand && s.toggleBtnNotExpand)} onClick={handleToggleExpand} />
+      <div className={cn(s.toggleBtn, !isExpand && s.fold)} onClick={handleToggleExpand} />
     </div>
   );
 };

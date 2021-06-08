@@ -10,6 +10,11 @@
 
 用 useCallback 可以避免这种情况下的 Render。
 
+
+### 2.1 避免不必要的属性变化，导致的 Render
+属性中使用 箭头函数。
+
+render Props 导致的重新渲染： https://zh-hans.reactjs.org/docs/render-props.html#caveats
 ### 3. 中间属性变化时，避免 中间组件的 Render
 
 ### 4. 批量更新: 减少 Render 次数
@@ -22,7 +27,7 @@ this.setState({b: 4})
 this.setState({a: 3, b: 4})
 ```
 
-对于函数组件，
+对于函数组件，用 `batchUpdates` 把更新。
 
 
 ## 避免不必用的 DOM 更新

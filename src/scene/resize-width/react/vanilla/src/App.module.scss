@@ -1,15 +1,18 @@
 .app {
   display: flex;
   height: 100vh;
+  color: #fff;
 }
 
-.left {
+.menu {
   position: relative;
   border-right: 1px solid #e6e9ed;
   height: 100%;
+  background: #CEE5D0;
 }
 
-.right {
+.main {
   flex-grow: 1;
   height: 100%;
+  background-color: #5E454B;
 }

@@ -1,70 +1,41 @@
-# Getting Started with Create React App
+# 拖放调整元素宽度的实现
+不少管理后台支持拖放来调节左侧菜单的宽度，以此来提升用户体验。
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+TODO：gif图片。
 
-## Available Scripts
+本文介绍下实现。
 
-In the project directory, you can run:
+## 算法
+算法: 开始拖动，记录光标的水平位置，设置菜单宽度为当前宽度加上当前光标和位置，结束拖动。
 
-### `yarn start`
+流程图。
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+下面，我们用react代码具体来实现下。
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+## 具体实现
+开始拖动
+在拖动线上，按下鼠标，表示开始拖动。
+代码
 
-### `yarn test`
+记录鼠标的位置
+在 document 上榜
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+设置菜单宽度
+代码。 最大，最小宽度。
 
-### `yarn build`
+结束拖动
+放开鼠标，则
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+优化项
+去除拖动时对文字的选中
+拖动时，经过文字时，会选中文字。下面的代码来去除选中。
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+菜单宽度有限制
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
 
-### `yarn eject`
+完善结束拖动的判断
+用户结束 在 iframe 或 一些组织冒泡的元素。
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `yarn build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+完整的代码
+代码里加上

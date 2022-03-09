@@ -1,0 +1,74 @@
+body {
+  margin: 0;
+  padding: 20px;
+}
+
+.list {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.card {
+  margin: 0 10px 10px 0;
+  min-width: 200px;
+  border-radius: 3px;
+  background-color: #fff;
+  box-shadow: 0px 0px 0px 1px rgba(218, 223, 230, 0.5), 0px 0.5px 3.5px 0px rgba(0, 0, 0, 0.12);
+
+  /* 非核心CSS */
+  text-align: center;
+  height: 200px;
+  line-height: 200px;
+}
+
+/* @for $i from 1 through 20 {
+  .list-col-#{$i} {
+      .card {
+          &:nth-child(#{$i}n) {
+              margin-right: 0;
+          }
+      }
+  }
+} */
+
+.list-col-1 .card {
+  margin-right: 0;
+}
+
+.list-col-2 .card:nth-child(2n) {
+  margin-right: 0;
+}
+
+.list-col-3 .card:nth-child(3n) {
+  margin-right: 0;
+}
+
+.list-col-4 .card:nth-child(4n) {
+  margin-right: 0;
+}
+
+.list-col-5 .card:nth-child(5n) {
+  margin-right: 0;
+}
+
+.list-col-6 .card:nth-child(6n) {
+  margin-right: 0;
+}
+
+.list-col-7 .card:nth-child(7n) {
+  margin-right: 0;
+}
+
+.list-col-8 .card:nth-child(8n) {
+  margin-right: 0;
+}
+
+.list-col-9 .card:nth-child(9n) {
+  margin-right: 0;
+}
+
+.list-col-10 .card:nth-child(10n) {
+  margin-right: 0;
+}
+
+

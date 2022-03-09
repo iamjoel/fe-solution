@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>自适应卡片布局</title>
+  <link rel="stylesheet" href="./assets/style.css">
+</head>
+<body>
+  <h1>卡片列表</h1>
+  <div class="list"></div>
+  <script src="./assets/get-column.js"></script>
+  <script>
+    const LIST_ITEM_NUM = 11;
+    const CARD_MIN_WIDTH = 200;
+    const listElem = document.querySelector('.list');
+
+    main();
+    function main() {
+      renderList();
+      window.addEventListener('resize', renderList);
+    }
+
+    function renderList() {
+      const { columNum, colWidth } = getColumNum(listElem, CARD_MIN_WIDTH);
+      const res = [];
+      for (let i = 0; i < LIST_ITEM_NUM; i++) {
+        const itemHTML = `
+              <div 
+                class="card"
+                style="width: ${colWidth}px"
+              ">卡片${i + 1}</div>
+            `;
+        res.push(itemHTML);
+      }
+      listElem.setAttribute('class', `list list-col-${columNum}`);
+      listElem.innerHTML = res.join('');
+    }
+  </script>
+</body>
+</html>

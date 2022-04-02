@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="10px" height="40px" viewBox="0 0 10 40" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <title>Group 2</title>
+    <defs>
+        <path d="M3.54857288,20 L7.97140035,15.2198864 C8.03972586,15.13125 7.97806625,15 7.86641235,15 L6.57822636,15 C6.49656903,15 6.41824466,15.0392045 6.36825038,15.1039773 L2.11373699,19.6642045 C1.96208767,19.8619318 1.96208767,20.1397727 2.11373699,20.3375 L6.36825038,24.8960227 C6.41824466,24.9625 6.49656903,25 6.57822636,25 L7.86641235,25 C7.97806625,25 8.03972586,24.86875 7.97140035,24.7801136 L3.54857288,20 Z" id="path-1"></path>
+    </defs>
+    <g id="应用管理" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="#-侧边栏拉伸" transform="translate(-601.000000, -538.000000)">
+            <g id="Group-3" transform="translate(80.000000, 132.000000)">
+                <g id="Group-2" transform="translate(521.000000, 406.000000)">
+                    <path d="M0,0 L2,0 C6.418278,-8.11624501e-16 10,3.581722 10,8 L10,32 C10,36.418278 6.418278,40 2,40 L0,40 L0,40 L0,0 Z" id="Rectangle" fill="#E6E9ED"></path>
+                    <mask id="mask-2" fill="white">
+                        <use xlink:href="#path-1"></use>
+                    </mask>
+                    <use id="Path" fill="#8592A6" fill-rule="nonzero" xlink:href="#path-1"></use>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>

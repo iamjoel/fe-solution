@@ -13,8 +13,10 @@
 * [用工具 CSS 来快速写样式](src/effective/utility-css/README.md)。关键字: tailwind CSS。
 
 ## 业务场景
-* [拖放排序](src/scene/dnd-sort/README.md)。关键字: react-beautiful-dnd，react DnD。
-* [拖放上传文件](src/scene/dnd-upload-file/README.md)。关键字: Drag & Drop API。
+* 拖放
+  * [拖放排序](src/scene/dnd-sort/README.md)。关键字: react-beautiful-dnd，react DnD。
+  * [拖放调整元素宽度的详细介绍](src/scene/resize-width/react/vanilla/README.md)
+  * [拖放上传文件](src/scene/dnd-upload-file/README.md)。关键字: Drag & Drop API。
 * [列表滚动无限加载](src/scene/list-infinite-load/README.md)。关键字: scrollHeight，clientHeight，scrollTop。
 * [异步同时获取数据，按指定顺序渲染元素](src/scene/async-data-in-order-render/README.md)。关键字: 异步控制。
 * 布局

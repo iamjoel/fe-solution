@@ -19,12 +19,11 @@ const columns = [
       }
 ]
 
-
 </script>
 
 <template>
   <main>
-    <SearchPanel>
+    <SearchPanel @search="fetchList(true)">
       <SearchItem name="no">
         <Input placeholder="input no" />
       </SearchItem>

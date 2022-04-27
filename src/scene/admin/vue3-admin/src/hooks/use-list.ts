@@ -14,7 +14,10 @@ export default function useList() {
     }
   })
 
-  const fetchList = () => {
+  const fetchList = (reSearch?: boolean) => {
+    if (reSearch) {
+      data.pager.current = 1
+    }
     data.list = []
     for(let i = 0; i < 10; i++) {
       data.list.push({

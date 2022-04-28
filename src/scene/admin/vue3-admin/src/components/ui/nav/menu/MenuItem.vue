@@ -1,5 +1,5 @@
 <script ts setup>
-const props = defineProps();
+const props = defineProps<Record<string, any>>()
 </script>
 
 <template>

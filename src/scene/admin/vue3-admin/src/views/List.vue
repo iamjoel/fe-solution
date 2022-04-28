@@ -1,24 +1,19 @@
 <script setup lang="ts">
-import useList from '@/hooks/use-list';
-import Input from '@/components/ui/form/Input.vue';
+import useList from '@/hooks/use-list'
+import Input from '@/components/ui/form/Input.vue'
 const {
-  components: {
-    SearchPanel,
-    SearchItem,
-    Table
-  },
+  components: { SearchPanel, SearchItem, Table },
   list,
-  fetchList,
-  searchQuery,
+  fetchList
+  // searchQuery,
 } = useList()
 
 const columns = [
-      {
-        title: 'No',
-        dataIndex: 'no',
-      }
+  {
+    title: 'No',
+    dataIndex: 'no'
+  }
 ]
-
 </script>
 
 <template>

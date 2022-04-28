@@ -3,8 +3,7 @@ import SearchPanel from '@/components/logic/SearchPanel.vue'
 import SearchItem from '@/components/logic/SearchItem.vue'
 import Table from '@/components/ui/Table.vue'
 
-
-export default function useList() {
+export default function useList () {
   const data = reactive({
     searchQuery: {},
     list: [],
@@ -14,12 +13,12 @@ export default function useList() {
     }
   })
 
-  const fetchList = (reSearch?: boolean) => {
+  const fetchList = (reSearch = false) => {
     if (reSearch) {
       data.pager.current = 1
     }
     data.list = []
-    for(let i = 0; i < 10; i++) {
+    for (let i = 0; i < 10; i++) {
       data.list.push({
         id: i,
         key: i,
@@ -33,14 +32,14 @@ export default function useList() {
     fetchList()
   })
 
-  watch(() => data.searchQuery, fetchList, { deep: true })
+  watch(() => data.searchQuery, () => fetchList, { deep: true })
   return {
     ...toRefs(data),
     fetchList,
     components: {
       SearchPanel,
       SearchItem,
-      Table,
+      Table
     }
   }
 }

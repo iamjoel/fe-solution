@@ -1,8 +1,8 @@
 <script ts setup>
-const props = defineProps();
+const props = defineProps<Record<string, any>>()
 const applyProps = {
-  type:"primary",
-  ...props,
+  type: 'primary',
+  ...props
 }
 </script>
 

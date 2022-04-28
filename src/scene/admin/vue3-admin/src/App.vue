@@ -4,19 +4,14 @@ import Navbar from '@/components/ui/layout/Navbar.vue'
 import Menu from '@/components/ui/nav/menu/Menu.vue'
 import SubMenu from '@/components/ui/nav/menu/SubMenu.vue'
 import MenuItem from '@/components/ui/nav/menu/MenuItem.vue'
-import {
-  IconApps,
-} from '@arco-design/web-vue/es/icon';
+import { IconApps } from '@arco-design/web-vue/es/icon'
 </script>
 
 <template>
   <div>
     <Navbar />
     <main class="main">
-      <Menu 
-        class="menu"
-        breakpoint="xl"
-      >
+      <Menu class="menu" breakpoint="xl">
         <SubMenu>
           <template #icon><icon-apps></icon-apps></template>
           <template #title>常规页面</template>
@@ -33,9 +28,8 @@ import {
       </div>
     </main>
   </div>
-  
 </template>
 
 <style scoped>
-@import '@/assets/base.css';
+@import "@/assets/base.css";
 </style>

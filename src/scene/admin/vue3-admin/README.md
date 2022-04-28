@@ -24,10 +24,13 @@
 * axios 的封装。
 * mock 接口。
 * 组件库的切换
-* 代码格式化
 * hooks 库
 * 最佳实践。
 * plop 创建页面的脚手架。
+
+## 代码格式化
+* [eslint-plugins-vue](https://eslint.vuejs.org/rules/)
+
 
 ## 资源
 * https://v3.cn.vuejs.org/api/sfc-script-setup.html

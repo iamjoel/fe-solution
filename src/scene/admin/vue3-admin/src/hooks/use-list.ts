@@ -3,8 +3,17 @@ import SearchPanel from '@/components/logic/SearchPanel.vue'
 import SearchItem from '@/components/logic/SearchItem.vue'
 import Table from '@/components/ui/Table.vue'
 
+interface State {
+  searchQuery: Record<string, any>,
+  list: Record<string, any>[]
+  pager: {
+    current: number,
+    total: number,
+  }
+}
+
 export default function useList () {
-  const data = reactive({
+  const data = reactive<State>({
     searchQuery: {},
     list: [],
     pager: {
@@ -28,7 +37,6 @@ export default function useList () {
   }
 
   onMounted(() => {
-    console.log('mounted')
     fetchList()
   })
 

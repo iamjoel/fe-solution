@@ -30,10 +30,11 @@
 
 ## 代码格式化
 * [eslint-plugins-vue](https://eslint.vuejs.org/rules/)
-
+* JavaScript Standard
 
 ## 资源
 * https://v3.cn.vuejs.org/api/sfc-script-setup.html
+* [TypeScript with Composition API](https://vuejs.org/guide/typescript/composition-api.html)
 * [vueUse](https://vueuse.org/core/onclickoutside)
 * [arco.design](https://arco.design/vue/docs/start)
 * https://vuejsdevelopers.com/newsletter/

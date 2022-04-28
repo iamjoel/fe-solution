@@ -4,5 +4,16 @@ body {
 }
 
 .main {
+  display: flex;
+}
+
+.menu {
+  max-width: 200px;
+  height: calc(100vh - 60px);
+  overflow-y: auto;
+}
+
+.right-content {
+  flex-grow: 1;
   padding: 10px;
 }

@@ -22,7 +22,6 @@
 * 登录页
 * 404 页
 * axios 的封装。
-* mock 接口。
 * 组件库的切换
 * hooks 库
 * 最佳实践。
@@ -35,7 +34,10 @@
 ## 资源
 * https://v3.cn.vuejs.org/api/sfc-script-setup.html
 * [TypeScript with Composition API](https://vuejs.org/guide/typescript/composition-api.html)
-* [vueUse](https://vueuse.org/core/onclickoutside)
-* [arco.design](https://arco.design/vue/docs/start)
-* https://vuejsdevelopers.com/newsletter/
-* [Vue Router](https://router.vuejs.org/zh/guide/essentials/nested-routes.html#%E5%B5%8C%E5%A5%97%E8%B7%AF%E7%94%B1)
+* 第三方库
+  * [vueUse](https://vueuse.org/core/onclickoutside)
+  * [arco.design](https://arco.design/vue/docs/start)
+  * [Vue Router](https://router.vuejs.org/zh/guide/essentials/nested-routes.html#%E5%B5%8C%E5%A5%97%E8%B7%AF%E7%94%B1)
+  * [Mockjs](https://github.com/nuysoft/Mock/wiki/Mock.mock())
+* 其他
+  * https://vuejsdevelopers.com/newsletter/

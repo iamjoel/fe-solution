@@ -12,7 +12,7 @@ interface State {
   }
 }
 
-export default function useList () {
+export default function useList (doFetchList) {
   const data = reactive<State>({
     searchQuery: {},
     list: [],
@@ -22,18 +22,13 @@ export default function useList () {
     }
   })
 
-  const fetchList = (reSearch = false) => {
+  const fetchList = async (reSearch = false) => {
     if (reSearch) {
       data.pager.current = 1
     }
     data.list = []
-    for (let i = 0; i < 10; i++) {
-      data.list.push({
-        id: i,
-        key: i,
-        no: Math.round(Math.random() * 1000)
-      })
-    }
+    const { data: { list } } = await doFetchList()
+    data.list = list
   }
 
   onMounted(() => {
@@ -43,6 +38,7 @@ export default function useList () {
   watch(() => data.searchQuery, () => fetchList, { deep: true })
   return {
     ...toRefs(data),
+    // ...data,
     fetchList,
     components: {
       SearchPanel,

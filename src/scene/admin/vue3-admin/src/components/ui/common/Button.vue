@@ -1,15 +1,14 @@
-<script ts setup>
-const props = withDefaults(defineProps<Record<string, any>>(), {
+<script setup lang="ts">
+const props = withDefaults(defineProps<{
+  type: string,
+  [key: string]: any,
+}>(), {
   type: 'primary'
 })
-// const applyProps = {
-//   type: 'primary',
-//   ...props
-// }
 </script>
 
 <template>
-  <a-button v-bind="props">
+  <a-button v-bind="props as any">
     <slot />
   </a-button>
 </template>

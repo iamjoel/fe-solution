@@ -1,4 +1,4 @@
-<script ts setup>
+<script setup lang="ts">
 import Row from '@/components/ui/layout/Row.vue'
 import Button from '@/components/ui/common/Button.vue'
 

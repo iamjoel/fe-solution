@@ -1,4 +1,4 @@
-<script ts setup>
+<script setup lang="ts">
 import Row from '@/components/ui/layout/Row.vue'
 import Col from '@/components/ui/layout/Col.vue'
 const props = defineProps({

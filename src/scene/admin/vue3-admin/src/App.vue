@@ -16,7 +16,7 @@ import { IconApps } from '@arco-design/web-vue/es/icon'
           <template #icon><icon-apps></icon-apps></template>
           <template #title>常规页面</template>
           <MenuItem key="list">
-            <router-link to="/list">列表</router-link>
+            <router-link to="/staff/list">邮件列表</router-link>
           </MenuItem>
           <MenuItem key="home">
             <router-link to="/">首页</router-link>

@@ -1,34 +1,31 @@
 import { onMounted, reactive, watch, toRefs } from 'vue'
-import SearchPanel from '@/components/logic/SearchPanel.vue'
-import SearchItem from '@/components/logic/SearchItem.vue'
+import SearchPanel from '@/components/logic/search/SearchPanel.vue'
 import Table from '@/components/ui/Table.vue'
 
 interface State {
   searchQuery: Record<string, any>,
   list: Record<string, any>[]
-  pager: {
+  pagination: {
     current: number,
     total: number,
   }
 }
 
-export default function useList (doFetchList) {
+export default function useList (doFetchList: (current: number) => Promise<any>) {
   const data = reactive<State>({
     searchQuery: {},
     list: [],
-    pager: {
+    pagination: {
       current: 1,
       total: 1
     }
   })
 
-  const fetchList = async (reSearch = false) => {
-    if (reSearch) {
-      data.pager.current = 1
-    }
-    data.list = []
-    const { data: { list } } = await doFetchList()
+  const fetchList = async (current = 1) => {
+    data.pagination.current = current
+    const { data: { list, total } } = await doFetchList(current)
     data.list = list
+    data.pagination.total = total
   }
 
   onMounted(() => {
@@ -42,7 +39,6 @@ export default function useList (doFetchList) {
     fetchList,
     components: {
       SearchPanel,
-      SearchItem,
       Table
     }
   }

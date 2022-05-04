@@ -5,5 +5,7 @@ const props = defineProps<{
 </script>
 
 <template>
-  <a-table v-bind="props" />
+  <a-table v-bind="props">
+    <template #operation="{ record }"><slot name="operation" :rowData="record"/></template>
+  </a-table>
 </template>

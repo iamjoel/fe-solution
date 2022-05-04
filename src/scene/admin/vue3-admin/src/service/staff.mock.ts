@@ -7,7 +7,7 @@ const total = Random.integer(1, 100)
 for (let i = 1; i <= total; i++) {
   staffList.push({
     id: i,
-    gender: Random.boolean(),
+    gender: Random.integer(0, 1),
     name: Random.cname(),
     age: Random.integer(10, 100),
     address: Random.county(true),

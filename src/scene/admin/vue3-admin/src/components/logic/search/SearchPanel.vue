@@ -2,9 +2,6 @@
 import Row from '@/components/ui/layout/Row.vue'
 import Button from '@/components/ui/common/Button.vue'
 
-// const emit = defineEmits<{
-//   (e: 'search'): void
-// }>() // ts写法会编译报错。。。
 const emit = defineEmits(['search'])
 
 const handleSearch = () => {

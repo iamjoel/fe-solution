@@ -17,9 +17,7 @@ for (let i = 1; i <= total; i++) {
 }
 
 Mock.mock(/\/pet\/list/, ({ url }: any) => {
-  console.log(url)
-  const { current } = qs.parse(url) // 解析问题
-  console.log(current)
+  const { current } = qs.parse(url.split('?')[1])
   const start = (parseInt(current as string || '1', 10) - 1) * 10
   const end = start + 10// 10条数据
   return {

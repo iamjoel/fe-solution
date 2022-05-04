@@ -9,7 +9,7 @@ const {
   components: { SearchPanel, Table },
   list,
   fetchList,
-  pagination
+  pageConfig
   // searchQuery,
 } = useList(props.fetchList)
 
@@ -21,13 +21,13 @@ const handlePageChange = (current: number) => {
 
 <template>
   <main>
-    <SearchPanel @search="fetchList(true)">
+    <SearchPanel @search="fetchList(1)">
       <slot name="searchPanel"/>
     </SearchPanel>
     <Table
       :columns="props.columns"
       :data="list"
-      :pagination="pagination"
+      :pagination="pageConfig"
       @page-change="handlePageChange"
     />
   </main>

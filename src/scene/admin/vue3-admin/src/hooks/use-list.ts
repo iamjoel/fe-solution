@@ -5,9 +5,11 @@ import Table from '@/components/ui/Table.vue'
 interface State {
   searchQuery: Record<string, any>,
   list: Record<string, any>[]
-  pagination: {
+  pageConfig: {
     current: number,
     total: number,
+    showTotal: boolean,
+    showJumper: boolean,
   }
 }
 
@@ -15,17 +17,19 @@ export default function useList (doFetchList: (current: number) => Promise<any>)
   const data = reactive<State>({
     searchQuery: {},
     list: [],
-    pagination: {
+    pageConfig: {
       current: 1,
-      total: 1
+      total: 1,
+      showTotal: true,
+      showJumper: true
     }
   })
 
   const fetchList = async (current = 1) => {
-    data.pagination.current = current
+    data.pageConfig.current = current
     const { data: { list, total } } = await doFetchList(current)
     data.list = list
-    data.pagination.total = total
+    data.pageConfig.total = total
   }
 
   onMounted(() => {

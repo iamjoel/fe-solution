@@ -3,7 +3,8 @@ import useList from '@/hooks/use-list'
 import Button from '@/components/ui/common/Button.vue'
 import Space from '@/components/ui/layout/Space.vue'
 const props = defineProps<{
-  fetchList:(current: number) => Promise<any>,
+  fetchList:(current: number, searchQuery: Record<string, any>) => Promise<any>,
+  searchQuery: Record<string, any>,
   columns: any[],
 }>()
 
@@ -12,8 +13,7 @@ const {
   list,
   fetchList,
   pageConfig
-  // searchQuery,
-} = useList(props.fetchList)
+} = useList(props.fetchList, props.searchQuery)
 
 const scrollConfig = { x: '100%' }
 
@@ -31,11 +31,11 @@ const handlePageChange = (current: number) => {
   fetchList(current)
 }
 
-const handleView = (id) => {
+const handleView = (id: number) => {
   console.log(id)
 }
 
-const handleDelete = (id) => {
+const handleDelete = (id: number) => {
   console.log(id)
 }
 </script>

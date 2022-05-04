@@ -1,10 +1,11 @@
 <script setup lang="ts">
-import { h } from 'vue'
+import { reactive, h } from 'vue'
 import { fetchList } from '@/service/staff'
 import List from '@/components/logic/List.vue'
 import SearchItem from '@/components/logic/search/SearchItem.vue'
 import Input from '@/components/ui/form/Input.vue'
 
+const searchQuery = reactive({ name: '' })
 const columns = [
   {
     title: 'ID',
@@ -26,7 +27,7 @@ const columns = [
     title: '性别',
     dataIndex: 'gender',
     width: 60,
-    render ({ record }) {
+    render ({ record }: any) {
       return h('span', record.gender === 1 ? '男' : '女')
     }
   },
@@ -53,10 +54,11 @@ const columns = [
     <List
       :fetchList="fetchList"
       :columns="columns"
+      :searchQuery="searchQuery"
     >
       <template #searchPanel>
         <SearchItem name="姓名">
-          <Input />
+          <Input v-model="searchQuery.name"/>
         </SearchItem>
       </template>
     </List>

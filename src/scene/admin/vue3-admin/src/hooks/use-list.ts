@@ -3,7 +3,6 @@ import SearchPanel from '@/components/logic/search/SearchPanel.vue'
 import Table from '@/components/ui/Table.vue'
 
 interface State {
-  searchQuery: Record<string, any>,
   list: Record<string, any>[]
   pageConfig: {
     current: number,
@@ -13,9 +12,8 @@ interface State {
   }
 }
 
-export default function useList (doFetchList: (current: number) => Promise<any>) {
+export default function useList (doFetchList: (current: number, searchQuery: Record<string, any>) => Promise<any>, searchQuery: Record<string, any>) {
   const data = reactive<State>({
-    searchQuery: {},
     list: [],
     pageConfig: {
       current: 1,
@@ -27,7 +25,7 @@ export default function useList (doFetchList: (current: number) => Promise<any>)
 
   const fetchList = async (current = 1) => {
     data.pageConfig.current = current
-    const { data: { list, total } } = await doFetchList(current)
+    const { data: { list, total } } = await doFetchList(current, searchQuery)
     data.list = list
     data.pageConfig.total = total
   }
@@ -36,10 +34,9 @@ export default function useList (doFetchList: (current: number) => Promise<any>)
     fetchList()
   })
 
-  watch(() => data.searchQuery, () => fetchList, { deep: true })
+  watch(() => searchQuery, () => fetchList, { deep: true })
   return {
     ...toRefs(data),
-    // ...data,
     fetchList,
     components: {
       SearchPanel,

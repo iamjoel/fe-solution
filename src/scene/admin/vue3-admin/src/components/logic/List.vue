@@ -48,8 +48,8 @@ const handleDelete = (id) => {
     <Table
       :columns="columns"
       :data="list"
-      :pagination="pageConfig"
       :scroll="scrollConfig"
+      :pagination="pageConfig"
       @page-change="handlePageChange"
     >
       <template #operation="{ rowData }">

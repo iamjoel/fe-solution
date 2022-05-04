@@ -15,7 +15,7 @@ const columns = [
   {
     title: '姓名',
     dataIndex: 'name',
-    width: 60
+    width: 80
   },
   {
     title: '年龄',

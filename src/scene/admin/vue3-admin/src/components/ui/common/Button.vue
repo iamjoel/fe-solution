@@ -1,6 +1,6 @@
 <script setup lang="ts">
 const props = withDefaults(defineProps<{
-  type: string,
+  type?: string,
   [key: string]: any,
 }>(), {
   type: 'primary'

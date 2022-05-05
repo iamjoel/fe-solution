@@ -4,8 +4,11 @@ import { fetchList } from '@/service/staff'
 import List from '@/components/logic/List.vue'
 import SearchItem from '@/components/logic/search/SearchItem.vue'
 import Input from '@/components/ui/form/Input.vue'
+import Select from '@/components/ui/form/select/Select.vue'
+import Option from '@/components/ui/form/select/Option.vue'
+import RangePicker from '@/components/ui/form/RangePicker.vue'
 
-const searchQuery = reactive({ name: '' })
+const searchQuery = reactive({ name: '', address: '' })
 const columns = [
   {
     title: 'ID',
@@ -59,6 +62,21 @@ const columns = [
       <template #searchPanel>
         <SearchItem name="姓名">
           <Input v-model="searchQuery.name"/>
+        </SearchItem>
+        <SearchItem name="省份">
+          <Select v-model="searchQuery.address" placeholder="不限">
+            <Option value="">不限</Option>
+            <Option value="北京">北京</Option>
+            <Option value="上海">上海</Option>
+            <Option value="江苏">江苏省</Option>
+            <Option value="浙江">浙江省</Option>
+            <Option value="广东">广东省</Option>
+            <Option value="山东">山东省</Option>
+          </Select>
+        </SearchItem>
+
+        <SearchItem name="创建时间">
+          <RangePicker v-model="searchQuery.createTime"/>
         </SearchItem>
       </template>
     </List>

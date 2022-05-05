@@ -1,4 +1,5 @@
 <script setup lang="ts">
+import { nextTick } from 'vue'
 import useList from '@/hooks/use-list'
 import Button from '@/components/ui/common/Button.vue'
 import Space from '@/components/ui/layout/Space.vue'
@@ -7,6 +8,8 @@ const props = defineProps<{
   searchQuery: Record<string, any>,
   columns: any[],
 }>()
+
+const emit = defineEmits(['reset'])
 
 const {
   components: { SearchPanel, Table },
@@ -27,6 +30,12 @@ const columns = [
   }
 ]
 
+const handleReset = async () => {
+  emit('reset')
+  await nextTick()
+  fetchList(1)
+}
+
 const handlePageChange = (current: number) => {
   fetchList(current)
 }
@@ -42,7 +51,10 @@ const handleDelete = (id: number) => {
 
 <template>
   <main>
-    <SearchPanel @search="fetchList(1)">
+    <SearchPanel
+      @search="fetchList(1)"
+      @reset="handleReset"
+    >
       <slot name="searchPanel"/>
     </SearchPanel>
     <Table

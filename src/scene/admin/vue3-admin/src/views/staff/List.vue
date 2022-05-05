@@ -8,7 +8,18 @@ import Select from '@/components/ui/form/select/Select.vue'
 import Option from '@/components/ui/form/select/Option.vue'
 import RangePicker from '@/components/ui/form/RangePicker.vue'
 
-const searchQuery = reactive({ name: '', address: '' })
+const getDefaultSearchQuery = () => ({
+  name: '',
+  address: '',
+  createTime: []
+})
+
+const searchQuery = reactive(getDefaultSearchQuery())
+
+const handleReset = async () => {
+  Object.assign(searchQuery, getDefaultSearchQuery())
+}
+
 const columns = [
   {
     title: 'ID',
@@ -58,6 +69,7 @@ const columns = [
       :fetchList="fetchList"
       :columns="columns"
       :searchQuery="searchQuery"
+      @reset="handleReset"
     >
       <template #searchPanel>
         <SearchItem name="姓名">

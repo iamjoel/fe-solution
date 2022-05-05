@@ -7,6 +7,8 @@ import Input from '@/components/ui/form/Input.vue'
 import Select from '@/components/ui/form/select/Select.vue'
 import Option from '@/components/ui/form/select/Option.vue'
 import RangePicker from '@/components/ui/form/RangePicker.vue'
+import Form from '@/components/ui/form/Form.vue'
+import FormItem from '@/components/ui/form/FormItem.vue'
 
 const getDefaultSearchQuery = () => ({
   name: '',
@@ -88,8 +90,12 @@ const columns = [
       </template>
 
       <!-- 详情 -->
-      <template #detail="{ type }">
-        {{ type }}
+      <template #detail="{ type, currItem }">
+        <Form :model="currItem">
+          <FormItem label="姓名">
+            <Input v-model="currItem.name" :disabled="type === 'view'"/>
+          </FormItem>
+        </Form>
       </template>
     </List>
   </main>

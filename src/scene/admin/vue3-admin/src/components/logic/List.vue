@@ -98,7 +98,7 @@ const detailTitle = computed(() => {
       :readonly="type === 'view'"
       @cancel="isShowDetail = false"
     >
-      <slot name="detail" :type="type"/>
+      <slot name="detail" :type="type" :currItem="currItem"/>
     </Detail>
   </main>
 </template>

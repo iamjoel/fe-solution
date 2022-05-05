@@ -22,12 +22,6 @@ const handleReset = async () => {
 
 const columns = [
   {
-    title: 'ID',
-    dataIndex: 'id',
-    fixed: 'left',
-    width: 50
-  },
-  {
     title: '姓名',
     dataIndex: 'name',
     width: 80
@@ -71,6 +65,7 @@ const columns = [
       :searchQuery="searchQuery"
       @reset="handleReset"
     >
+      <!-- 搜索条件 -->
       <template #searchPanel>
         <SearchItem name="姓名">
           <Input v-model="searchQuery.name"/>
@@ -90,6 +85,11 @@ const columns = [
         <SearchItem name="创建时间">
           <RangePicker v-model="searchQuery.createTime"/>
         </SearchItem>
+      </template>
+
+      <!-- 详情 -->
+      <template #detail="{ type }">
+        {{ type }}
       </template>
     </List>
   </main>

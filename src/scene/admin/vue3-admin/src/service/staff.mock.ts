@@ -30,6 +30,15 @@ Mock.mock(/\/pet\/list/, ({ url }: any) => {
     total: filteredList.length
   }
 })
+Mock.mock(/\/pet/, ({ body }: any) => {
+  staffList.unshift({
+    ...JSON.parse(body),
+    id: staffList.length + 5
+  })
+  return {
+    code: 0
+  }
+})
 
 Mock.mock(/\/pet\/\d+/, ({ url, body, type }: any) => {
   const id = parseInt(/\/pet\/(\d+)/.exec(url)?.[1] as string, 10)

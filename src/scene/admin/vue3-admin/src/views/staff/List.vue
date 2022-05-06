@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { reactive, h } from 'vue'
-import { fetchList, edit, remove } from '@/service/staff'
+import { fetchList, create, edit, remove } from '@/service/staff'
 import List from '@/components/logic/List.vue'
 import SearchItem from '@/components/logic/search/SearchItem.vue'
 import Input from '@/components/ui/form/Input.vue'
@@ -61,6 +61,8 @@ const columns = [
 const handleSave = async ({ type, payload, onSuccess }) => {
   if (type === 'edit') {
     await edit(payload.id, payload)
+  } else {
+    await create(payload)
   }
   onSuccess()
 }

@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import { h, nextTick, ref, reactive, computed } from 'vue'
 import { success } from '@/components/ui/feedback/message'
+import Divider from '@/components/ui/layout/Divider.vue'
 import Button from '@/components/ui/common/Button.vue'
 import Space from '@/components/ui/layout/Space.vue'
 import PopupConfirm from '@/components/ui/feedback/PopupConfirm.vue'
@@ -73,7 +74,7 @@ const handleDelete = (id: number) => {
 // 详情
 const isShowDetail = ref(false)
 const currItem = reactive({})
-const type = ref<'view'|'edit'>('view')
+const type = ref<'view' | 'edit' | 'create'>('view')
 
 const detailTitle = computed(() => {
   if (props.getDetailTitle) {
@@ -92,6 +93,14 @@ const handleOnEdit = (rowData: Record<string, any>) => {
   type.value = 'edit'
   isShowDetail.value = true
   Object.assign(currItem, rowData)
+}
+
+const handleCreate = () => {
+  type.value = 'create'
+  isShowDetail.value = true
+  Object.keys(currItem).forEach(key => {
+    currItem[key] = null
+  })
 }
 
 const handleSave = () => {
@@ -115,6 +124,10 @@ const handleSave = () => {
     >
       <slot name="searchPanel"/>
     </SearchPanel>
+    <Divider />
+    <div class="operation-wrap">
+      <Button @click="handleCreate">新增</Button>
+    </div>
     <Table
       class="table"
       :columns="columns"
@@ -149,5 +162,11 @@ const handleSave = () => {
 :deep(.table .col-id) {
   text-decoration: underline;
   cursor: pointer;
+}
+
+.operation-wrap {
+  margin: 10px 0;
+  display: flex;
+  justify-content: flex-end;
 }
 </style>

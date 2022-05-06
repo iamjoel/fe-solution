@@ -9,3 +9,7 @@ export const fetchList = (current: number, searchQuery: Record<string, any>) => 
     }
   })
 }
+
+export const edit = (id: number, data: Record<string, any>) => {
+  return http.patch(`/api/pet/${id}`, data)
+}

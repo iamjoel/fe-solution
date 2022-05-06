@@ -2,7 +2,7 @@ import Mock from 'mockjs'
 import qs from 'query-string'
 
 const Random = Mock.Random
-const staffList: any[] = []
+let staffList: any[] = []
 const total = Random.integer(1, 100)
 for (let i = 1; i <= total; i++) {
   staffList.push({
@@ -25,7 +25,18 @@ Mock.mock(/\/pet\/list/, ({ url }: any) => {
     return (name ? item.name.includes(name) : true) && (age ? item.age === parseInt(age as string, 10) : true) && (address ? item.address.includes(address) : true) && (describe ? item.describe.includes(describe) : true)
   })
   return {
+    code: 0,
     list: filteredList.slice(start, end),
     total: filteredList.length
+  }
+})
+
+Mock.mock(/\/pet\/\d+/, ({ url, body }: any) => {
+  const id = parseInt(/\/pet\/(\d+)/.exec(url)?.[1] as string, 10)
+  staffList = staffList.map(item => item.id === id
+    ? JSON.parse(body)
+    : item)
+  return {
+    code: 0
   }
 })

@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { reactive, h } from 'vue'
-import { fetchList } from '@/service/staff'
+import { fetchList, edit } from '@/service/staff'
 import List from '@/components/logic/List.vue'
 import SearchItem from '@/components/logic/search/SearchItem.vue'
 import Input from '@/components/ui/form/Input.vue'
@@ -57,6 +57,13 @@ const columns = [
     width: 120
   }
 ]
+
+const handleSave = async ({ type, payload, onSuccess }) => {
+  if (type === 'edit') {
+    await edit(payload.id, payload)
+  }
+  onSuccess()
+}
 </script>
 
 <template>
@@ -66,6 +73,7 @@ const columns = [
       :columns="columns"
       :searchQuery="searchQuery"
       @reset="handleReset"
+      @save="handleSave"
     >
       <!-- 搜索条件 -->
       <template #searchPanel>

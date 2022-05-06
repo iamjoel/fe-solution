@@ -11,6 +11,13 @@ const props = defineProps<{
 
 const isFullScreen = ref(false)
 
+const emit = defineEmits(['ok', 'cancel'])
+
+// 用 $emit('cancel') 会执行两次
+const handleOk = () => {
+  emit('ok')
+}
+
 </script>
 
 <template>
@@ -18,7 +25,7 @@ const isFullScreen = ref(false)
     :visible="props.isShow"
     :footer="!props.readonly"
     :width="isFullScreen ? '100vw' : '60vw'"
-    @ok="$emit('ok')"
+    @ok="handleOk"
     @cancel="$emit('cancel')"
     unmountOnClose
   >

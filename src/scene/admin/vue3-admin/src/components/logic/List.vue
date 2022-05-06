@@ -1,9 +1,12 @@
 <script setup lang="ts">
-import { nextTick, ref, reactive, computed } from 'vue'
-import useList from '@/hooks/use-list'
+import { h, nextTick, ref, reactive, computed } from 'vue'
+import { success } from '@/components/ui/feedback/message'
 import Button from '@/components/ui/common/Button.vue'
 import Space from '@/components/ui/layout/Space.vue'
 import Detail from '@/components/logic/detail/DetailDrawer.vue'
+
+import useList from '@/hooks/use-list'
+
 const props = defineProps<{
   fetchList:(current: number, searchQuery: Record<string, any>) => Promise<any>,
   searchQuery: Record<string, any>,
@@ -11,7 +14,7 @@ const props = defineProps<{
   getDetailTitle?: (rowData: Record<string, any>) => string,
 }>()
 
-const emit = defineEmits(['reset'])
+const emit = defineEmits(['reset', 'save'])
 
 const {
   components: { SearchPanel, Table },
@@ -27,7 +30,15 @@ const columns = [
     title: 'ID',
     dataIndex: 'id',
     fixed: 'left',
-    width: 50
+    width: 50,
+    render ({ record }: any) {
+      return h('span', {
+        class: 'col-id',
+        onClick: () => {
+          handleOnView(record)
+        }
+      }, record.id)
+    }
   },
   ...props.columns,
   {
@@ -56,10 +67,7 @@ const handleDelete = (id: number) => {
 const isShowDetail = ref(false)
 const currItem = reactive({})
 const type = ref<'view'|'edit'>('view')
-const handleView = (rowData: Record<string, any>) => {
-  isShowDetail.value = true
-  Object.assign(currItem, rowData)
-}
+
 const detailTitle = computed(() => {
   if (props.getDetailTitle) {
     return props.getDetailTitle(currItem)
@@ -67,6 +75,29 @@ const detailTitle = computed(() => {
   return currItem.title || currItem.name || '详情'
 })
 
+const handleOnView = (rowData: Record<string, any>) => {
+  type.value = 'view'
+  isShowDetail.value = true
+  Object.assign(currItem, rowData)
+}
+
+const handleOnEdit = (rowData: Record<string, any>) => {
+  type.value = 'edit'
+  isShowDetail.value = true
+  Object.assign(currItem, rowData)
+}
+
+const handleSave = () => {
+  emit('save', {
+    type: type.value,
+    payload: currItem,
+    onSuccess: () => {
+      success('操作成功!')
+      isShowDetail.value = false
+      fetchList(type.value === 'edit' ? pageConfig.value.current : 1)
+    }
+  })
+}
 </script>
 
 <template>
@@ -78,6 +109,7 @@ const detailTitle = computed(() => {
       <slot name="searchPanel"/>
     </SearchPanel>
     <Table
+      class="table"
       :columns="columns"
       :data="list"
       :scroll="scrollConfig"
@@ -86,7 +118,7 @@ const detailTitle = computed(() => {
     >
       <template #operation="{ rowData }">
         <Space>
-          <Button @click="handleView(rowData)" size="xs">详情</Button>
+          <Button @click="handleOnEdit(rowData)" size="xs">编辑</Button>
           <Button @click="handleDelete(rowData.id)" size="xs" status="danger">删除</Button>
         </Space>
       </template>
@@ -96,9 +128,17 @@ const detailTitle = computed(() => {
       :isShow="isShowDetail"
       :title="detailTitle"
       :readonly="type === 'view'"
+      @ok="handleSave"
       @cancel="isShowDetail = false"
     >
       <slot name="detail" :type="type" :currItem="currItem"/>
     </Detail>
   </main>
 </template>
+
+<style scoped>
+:deep(.table .col-id) {
+  text-decoration: underline;
+  cursor: pointer;
+}
+</style>

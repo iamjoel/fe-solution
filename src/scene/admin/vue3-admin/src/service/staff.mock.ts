@@ -31,11 +31,15 @@ Mock.mock(/\/pet\/list/, ({ url }: any) => {
   }
 })
 
-Mock.mock(/\/pet\/\d+/, ({ url, body }: any) => {
+Mock.mock(/\/pet\/\d+/, ({ url, body, type }: any) => {
   const id = parseInt(/\/pet\/(\d+)/.exec(url)?.[1] as string, 10)
-  staffList = staffList.map(item => item.id === id
-    ? JSON.parse(body)
-    : item)
+  if (type === 'DELETE') {
+    staffList = staffList.filter((item: any) => item.id !== id)
+  } else if (type === 'PATCH') {
+    staffList = staffList.map(item => item.id === id
+      ? JSON.parse(body)
+      : item)
+  }
   return {
     code: 0
   }

@@ -3,8 +3,9 @@ import { h, nextTick, ref, reactive, computed } from 'vue'
 import { success } from '@/components/ui/feedback/message'
 import Button from '@/components/ui/common/Button.vue'
 import Space from '@/components/ui/layout/Space.vue'
-import Detail from '@/components/logic/detail/DetailDrawer.vue'
+import PopupConfirm from '@/components/ui/feedback/PopupConfirm.vue'
 
+import Detail from '@/components/logic/detail/DetailDrawer.vue'
 import useList from '@/hooks/use-list'
 
 const props = defineProps<{
@@ -14,7 +15,7 @@ const props = defineProps<{
   getDetailTitle?: (rowData: Record<string, any>) => string,
 }>()
 
-const emit = defineEmits(['reset', 'save'])
+const emit = defineEmits(['reset', 'save', 'remove'])
 
 const {
   components: { SearchPanel, Table },
@@ -60,7 +61,13 @@ const handlePageChange = (current: number) => {
 }
 
 const handleDelete = (id: number) => {
-  console.log(id)
+  emit('remove', {
+    id,
+    onSuccess: () => {
+      success('删除成功!')
+      fetchList()
+    }
+  })
 }
 
 // 详情
@@ -119,7 +126,9 @@ const handleSave = () => {
       <template #operation="{ rowData }">
         <Space>
           <Button @click="handleOnEdit(rowData)" size="xs">编辑</Button>
-          <Button @click="handleDelete(rowData.id)" size="xs" status="danger">删除</Button>
+          <PopupConfirm @ok="handleDelete(rowData.id)" content="确认删除?">
+            <Button size="xs" status="danger">删除</Button>
+          </PopupConfirm>
         </Space>
       </template>
     </Table>

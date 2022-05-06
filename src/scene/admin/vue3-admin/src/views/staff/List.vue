@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { reactive, h } from 'vue'
-import { fetchList, edit } from '@/service/staff'
+import { fetchList, edit, remove } from '@/service/staff'
 import List from '@/components/logic/List.vue'
 import SearchItem from '@/components/logic/search/SearchItem.vue'
 import Input from '@/components/ui/form/Input.vue'
@@ -64,6 +64,11 @@ const handleSave = async ({ type, payload, onSuccess }) => {
   }
   onSuccess()
 }
+
+const handleRemove = async ({ id, onSuccess }) => {
+  await remove(id)
+  onSuccess()
+}
 </script>
 
 <template>
@@ -74,6 +79,7 @@ const handleSave = async ({ type, payload, onSuccess }) => {
       :searchQuery="searchQuery"
       @reset="handleReset"
       @save="handleSave"
+      @remove="handleRemove"
     >
       <!-- 搜索条件 -->
       <template #searchPanel>

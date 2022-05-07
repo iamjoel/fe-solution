@@ -10,6 +10,7 @@ interface State {
     showTotal: boolean,
     showJumper: boolean,
   }
+  isLoading: boolean
 }
 
 export default function useList (doFetchList: (current: number, searchQuery: Record<string, any>) => Promise<any>, searchQuery: Record<string, any>) {
@@ -20,14 +21,17 @@ export default function useList (doFetchList: (current: number, searchQuery: Rec
       total: 1,
       showTotal: true,
       showJumper: true
-    }
+    },
+    isLoading: false
   })
 
   const fetchList = async (current = 1) => {
+    data.isLoading = true
     data.pageConfig.current = current
     const { data: { list, total } } = await doFetchList(current, searchQuery)
     data.list = list
     data.pageConfig.total = total
+    data.isLoading = false
   }
 
   onMounted(() => {

@@ -22,7 +22,8 @@ const {
   components: { SearchPanel, Table },
   list,
   fetchList,
-  pageConfig
+  pageConfig,
+  isLoading
 } = useList(props.fetchList, props.searchQuery)
 
 const scrollConfig = { x: '100%' }
@@ -135,6 +136,7 @@ const handleSave = () => {
       :scroll="scrollConfig"
       :pagination="pageConfig"
       @page-change="handlePageChange"
+      :loading="isLoading"
     >
       <template #operation="{ rowData }">
         <Space>

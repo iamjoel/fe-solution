@@ -1,11 +1,14 @@
 import http from '@/utils/http'
+import type { sortType } from '@/define/list.d'
+
 import './staff.mock' // mock接口数据
 
-export const fetchList = (current: number, searchQuery: Record<string, any>) => {
+export const fetchList = (current: number, searchQuery: Record<string, any>, sortParams?: {key: string, value: sortType}) => {
   return http.get('/api/pet/list', {
     params: {
       current,
-      q: JSON.stringify(searchQuery)
+      q: JSON.stringify(searchQuery),
+      sort: sortParams
     }
   })
 }

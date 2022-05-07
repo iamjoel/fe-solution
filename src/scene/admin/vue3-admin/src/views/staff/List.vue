@@ -31,7 +31,11 @@ const columns = [
   {
     title: '年龄',
     dataIndex: 'age',
-    width: 60
+    width: 100,
+    sortable: {
+      sortDirections: ['ascend', 'descend'],
+      sorter: true // 关闭客户端排序
+    }
   },
   {
     title: '性别',

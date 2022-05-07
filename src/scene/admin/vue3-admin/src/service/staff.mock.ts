@@ -17,13 +17,19 @@ for (let i = 1; i <= total; i++) {
 }
 
 Mock.mock(/\/pet\/list/, ({ url }: any) => {
-  const { current, q } = qs.parse(url.split('?')[1])
+  const { current, q, sort } = qs.parse(url.split('?')[1])
   const start = (parseInt(current as string || '1', 10) - 1) * 10
   const end = start + 10// 10条数据
   const filteredList = staffList.filter((item: any) => {
     const { name, age, address, describe } = JSON.parse(q as string)
     return (name ? item.name.includes(name) : true) && (age ? item.age === parseInt(age as string, 10) : true) && (address ? item.address.includes(address) : true) && (describe ? item.describe.includes(describe) : true)
   })
+  if (sort) {
+    const { key, value } = JSON.parse(sort as string)
+    if (value) {
+      filteredList.sort((a: any, b: any) => value === 'ascend' ? a[key] - b[key] : b[key] - a[key])
+    }
+  }
   return {
     code: 0,
     list: filteredList.slice(start, end),

@@ -7,10 +7,11 @@ import Space from '@/components/ui/layout/Space.vue'
 import PopupConfirm from '@/components/ui/feedback/PopupConfirm.vue'
 
 import Detail from '@/components/logic/detail/DetailDrawer.vue'
+import { sortType } from '@/define/list.d'
 import useList from '@/hooks/use-list'
 
 const props = defineProps<{
-  fetchList:(current: number, searchQuery: Record<string, any>) => Promise<any>,
+  fetchList:(current: number, searchQuery: Record<string, any>, sortParams: {key: string, value: sortType}) => Promise<any>,
   searchQuery: Record<string, any>,
   columns: any[],
   getDetailTitle?: (rowData: Record<string, any>) => string,
@@ -22,6 +23,7 @@ const {
   components: { SearchPanel, Table },
   list,
   fetchList,
+  sortList,
   pageConfig,
   isLoading
 } = useList(props.fetchList, props.searchQuery)
@@ -60,6 +62,10 @@ const handleReset = async () => {
 
 const handlePageChange = (current: number) => {
   fetchList(current)
+}
+
+const handleSort = (key, value) => {
+  sortList({ key, value })
 }
 
 const handleDelete = (id: number) => {
@@ -137,6 +143,7 @@ const handleSave = () => {
       :pagination="pageConfig"
       @page-change="handlePageChange"
       :loading="isLoading"
+      @sorterChange="handleSort"
     >
       <template #operation="{ rowData }">
         <Space>

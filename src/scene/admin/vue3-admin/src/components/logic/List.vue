@@ -87,7 +87,11 @@ const detailTitle = computed(() => {
   if (props.getDetailTitle) {
     return props.getDetailTitle(currItem)
   }
-  return currItem.title || currItem.name || '详情'
+  return {
+    create: '创建',
+    edit: '编辑',
+    view: '查看'
+  }[type.value]
 })
 
 const handleOnView = (rowData: Record<string, any>) => {
@@ -133,7 +137,8 @@ const handleSave = () => {
     </SearchPanel>
     <Divider />
     <div class="operation-wrap">
-      <Button @click="handleCreate">新增</Button>
+      <Button @click="handleCreate" class="operation-btn">新增</Button>
+      <Button status="success" class="operation-btn">导出</Button>
     </div>
     <Table
       class="table"
@@ -177,5 +182,9 @@ const handleSave = () => {
   margin: 10px 0;
   display: flex;
   justify-content: flex-end;
+}
+
+.operation-btn {
+  margin-left: 10px;
 }
 </style>

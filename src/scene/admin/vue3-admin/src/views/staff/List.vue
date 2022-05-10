@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { reactive, h } from 'vue'
+import { reactive, h, ref } from 'vue'
 import { fetchList, create, edit, remove } from '@/service/staff'
 import List from '@/components/logic/List.vue'
 import SearchItem from '@/components/logic/search/SearchItem.vue'
@@ -9,6 +9,9 @@ import Option from '@/components/ui/form/select/Option.vue'
 import RangePicker from '@/components/ui/form/RangePicker.vue'
 import Form from '@/components/ui/form/Form.vue'
 import FormItem from '@/components/ui/form/FormItem.vue'
+import RadioGroup from '@/components/ui/form/radio/RadioGroup.vue'
+import Radio from '@/components/ui/form/radio/Radio.vue'
+import Textarea from '@/components/ui/form/Textarea.vue'
 
 const getDefaultSearchQuery = () => ({
   name: '',
@@ -62,6 +65,11 @@ const columns = [
   }
 ]
 
+const formRef = ref(null)
+const setFormRef = (ref: any) => {
+  formRef.value = ref
+}
+
 const handleSave = async ({ type, payload, onSuccess }) => {
   if (type === 'edit') {
     await edit(payload.id, payload)
@@ -83,6 +91,7 @@ const handleRemove = async ({ id, onSuccess }) => {
       :fetchList="fetchList"
       :columns="columns"
       :searchQuery="searchQuery"
+      :formRef="formRef"
       @reset="handleReset"
       @save="handleSave"
       @remove="handleRemove"
@@ -111,9 +120,24 @@ const handleRemove = async ({ id, onSuccess }) => {
 
       <!-- 详情 -->
       <template #detail="{ type, currItem }">
-        <Form :model="currItem">
-          <FormItem label="姓名">
+        <Form :model="currItem" :setRef="setFormRef">
+          <FormItem
+            label="姓名"
+            field="name"
+            :rules="type !== 'view' ? [{required:true,message:'姓名必填'}] : []"
+            :validate-trigger="['change','input']"
+          >
             <Input v-model="currItem.name" :disabled="type === 'view'"/>
+          </FormItem>
+          <FormItem label="性别">
+            <div v-if="type === 'view'">{{currItem.gender === 1 ? '男' : '女'}}</div>
+            <RadioGroup :model-value="currItem.gender" v-else>
+              <Radio :value="1">男</Radio>
+              <Radio :value="0">女</Radio>
+            </RadioGroup>
+          </FormItem>
+          <FormItem label="简介">
+            <Textarea v-model="currItem.describe" :disabled="type === 'view'"/>
           </FormItem>
         </Form>
       </template>

@@ -15,6 +15,7 @@ const props = defineProps<{
   searchQuery: Record<string, any>,
   columns: any[],
   getDetailTitle?: (rowData: Record<string, any>) => string,
+  formRef?: any,
 }>()
 
 const emit = defineEmits(['reset', 'save', 'remove'])
@@ -114,7 +115,11 @@ const handleCreate = () => {
   })
 }
 
-const handleSave = () => {
+const handleSave = async () => {
+  const validRes = await props.formRef.validate()
+  if (validRes) { // 没过验证
+    return
+  }
   emit('save', {
     type: type.value,
     payload: currItem,

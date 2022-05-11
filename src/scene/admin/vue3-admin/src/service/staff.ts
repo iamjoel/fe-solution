@@ -14,10 +14,12 @@ export const fetchList = (current: number, searchQuery: Record<string, any>, sor
 }
 
 export const edit = (id: number, data: Record<string, any>) => {
+  console.log(`edit: ${JSON.stringify(data)}`)
   return http.patch(`/api/pet/${id}`, data)
 }
 
 export const create = (data: Record<string, any>) => {
+  console.log(`create: ${JSON.stringify(data)}`)
   return http.put('/api/pet', data)
 }
 

@@ -39,7 +39,8 @@ Mock.mock(/\/pet\/list/, ({ url }: any) => {
 Mock.mock(/\/pet/, ({ body }: any) => {
   staffList.unshift({
     ...JSON.parse(body),
-    id: staffList.length + 5
+    id: staffList.length + 5,
+    createTime: Random.date('yyyy-MM-dd')
   })
   return {
     code: 0

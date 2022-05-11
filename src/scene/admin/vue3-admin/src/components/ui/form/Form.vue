@@ -1,12 +1,13 @@
 <script setup lang="ts">
-import { ref, onMounted } from 'vue'
+import { ref } from 'vue'
+
 const props = defineProps<{
-  setRef:(ref: any) => void,
   [key: string]: any,
 }>()
 const vmRef = ref(null)
-onMounted(() => {
-  props.setRef(vmRef.value)
+
+defineExpose({
+  form: vmRef
 })
 </script>
 

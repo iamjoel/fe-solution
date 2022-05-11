@@ -5,6 +5,7 @@ import Divider from '@/components/ui/layout/Divider.vue'
 import Button from '@/components/ui/common/Button.vue'
 import Space from '@/components/ui/layout/Space.vue'
 import PopupConfirm from '@/components/ui/feedback/PopupConfirm.vue'
+import Form from '@/components/ui/form/Form.vue'
 
 import Detail from '@/components/logic/detail/DetailDrawer.vue'
 import { sortType } from '@/define/list.d'
@@ -15,7 +16,6 @@ const props = defineProps<{
   searchQuery: Record<string, any>,
   columns: any[],
   getDetailTitle?: (rowData: Record<string, any>) => string,
-  formRef?: any,
 }>()
 
 const emit = defineEmits(['reset', 'save', 'remove'])
@@ -95,6 +95,8 @@ const detailTitle = computed(() => {
   }[type.value]
 })
 
+const formRef = ref(null)
+
 const handleOnView = (rowData: Record<string, any>) => {
   type.value = 'view'
   isShowDetail.value = true
@@ -116,7 +118,7 @@ const handleCreate = () => {
 }
 
 const handleSave = async () => {
-  const validRes = await props.formRef.validate()
+  const validRes = await formRef.value.form.validate()
   if (validRes) { // 没过验证
     return
   }
@@ -172,7 +174,9 @@ const handleSave = async () => {
       @ok="handleSave"
       @cancel="isShowDetail = false"
     >
-      <slot name="detail" :type="type" :currItem="currItem"/>
+      <Form :model="currItem" ref="formRef">
+        <slot name="detail" :type="type" :currItem="currItem"/>
+      </Form>
     </Detail>
   </main>
 </template>

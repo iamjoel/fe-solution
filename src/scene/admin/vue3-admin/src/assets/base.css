@@ -1,0 +1,20 @@
+body {
+  min-height: 100vh;
+  margin: 0;
+}
+
+.main {
+  display: flex;
+}
+
+.menu {
+  flex-shrink: 0;
+  max-width: 200px;
+  height: calc(100vh - 60px);
+  overflow-y: auto;
+}
+
+.right-content {
+  flex-grow: 1;
+  padding: 10px;
+}

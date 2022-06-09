@@ -1,0 +1,17 @@
+.table {
+  display: table;
+}
+
+.tr {
+  display: table-row;
+}
+
+.td {
+  display: table-cell;
+  padding: 10px;
+  border: 1px solid #ddd;
+}
+
+.td:last-child {
+  width: 200px;
+}

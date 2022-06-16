@@ -8,6 +8,8 @@
 
 推荐 [声名式实现](./src/width-length.js) 而不是 [命令式实现](./src/width-length-command.js)。
 
+[两种实现的比较](compare.md)
+
 ## 宽随长，高随宽变化的场景
 如果觉得这个还比较容易。可以再加入高这个变量。
 1. 长，宽，高 的值可单独改。
@@ -17,3 +19,4 @@
 5. 可以将长宽高值还原为默认值。 
 
 [实现](./src/width-length-height.js)
+

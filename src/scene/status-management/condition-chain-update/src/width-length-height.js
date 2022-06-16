@@ -1,4 +1,5 @@
 import React, { useState, useEffect, useRef } from 'react';
+import './style.css';
 
 export default function App() {
   const [defaultValue, setDefaultValue] = useState({
@@ -64,8 +65,8 @@ export default function App() {
           <span>高：</span>
           <input value={height} onChange={handleHeightChange} />
         </label>
-        <button onClick={revertToDefault}>还原为默认值</button>
-        <button onClick={saveToDefault}>设置为默认值</button>
+        <button onClick={revertToDefault} className="btn">还原为默认值</button>
+        <button onClick={saveToDefault} className="btn">设置为默认值</button>
       </form>
       <div>
         默认值：长 {defaultValue.length}, 宽 {defaultValue.width}， 高 {defaultValue.height}

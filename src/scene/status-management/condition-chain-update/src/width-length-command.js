@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import './style.css';
 
 export default function App() {
   const [defaultValue, setDefaultValue] = useState({
@@ -10,15 +11,21 @@ export default function App() {
   const handleWidthChange = (e) => setWidth(e.target.value);
 
   const [length, setLength] = useState(defaultValue.length);
+  const updateLength = (val, isUpdateWidth) => {
+    setLength(val);
+    if(isUpdateWidth) {
+      setWidth(val / 2);
+    }
+  }
   const handleLengthChange = (e) => {
     const val = e.target.value
-    setLength(val);
+    updateLength(val, true);
     setWidth(val / 2);
   };
 
   const revertToDefault = (e) => {
     e.preventDefault();
-    setLength(defaultValue.length);
+    updateLength(defaultValue.length, false);
     setWidth(defaultValue.width);
   };
 
@@ -41,8 +48,8 @@ export default function App() {
           <span>宽：</span>
           <input value={width} onChange={handleWidthChange} />
         </label>
-        <button onClick={revertToDefault}>还原为默认值</button>
-        <button onClick={saveToDefault}>设置为默认值</button>
+        <button onClick={revertToDefault} className="btn">还原为默认值</button>
+        <button onClick={saveToDefault} className="btn">设置为默认值</button>
       </form>
       <div>
         默认值：长 {defaultValue.length}, 宽 {defaultValue.width}

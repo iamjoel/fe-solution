@@ -25,6 +25,7 @@
 * 布局
   * [自适应卡片布局](src/scene/layout/flex-card-layout/README.md)。
   * [CSS 表格布局](src/scene/layout/table-layout/index.html)
+  * [表格滚动，表头固定的实现](src/scene/layout/fixed-table-header/index.html)
 * 管理后台
   * [Vue3 的实现](src/scene/admin/vue3-admin/README.md)。
 

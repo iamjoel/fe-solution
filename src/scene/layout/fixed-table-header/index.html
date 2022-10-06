@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>fixed-table-header</title>
+    <link rel="stylesheet" href="./style.css">
+</head>
+<body>
+    <p>
+        表格不支持 overflow: hidden。但可以用 th `position: sticky` 来实现。
+    </p>
+
+    <h1>表格</h1>
+    <div class="table-wrap">
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>序号</th>
+                    <th>姓名</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr><td>1</td><td>Joel</td></tr>
+                <tr><td>2</td><td>Jack</td></tr>
+                <tr><td>3</td><td>John</td></tr>
+                <tr><td>4</td><td>Tommy</td></tr>
+                <tr><td>5</td><td>Lily</td></tr>
+                <tr><td>6</td><td>Amy</td></tr>
+                <tr><td>7</td><td>LiLei</td></tr>
+                <tr><td>8</td><td></td></tr>
+                <tr><td>9</td><td></td></tr>
+            </tbody>
+        </table>
+    </div>
+    <h2>资源</h2>
+    <ul>
+        <li><a href="https://orangeable.com/css/fixed-table-headers">Fixed Table Headers with Pure CSS: Sticky On Scroll</a></li>
+        <li><a href="https://css-tricks.com/position-sticky-and-table-headers/">Position Sticky and Table Headers</a></li>
+    </ul>
+</body>
+</html>
